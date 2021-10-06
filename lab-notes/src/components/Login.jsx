@@ -1,6 +1,6 @@
 import React from 'react'
 import logo from '../images/logo.png'
-import { auth } from '../firebase'
+import { auth, db } from '../firebase'
 
 const Login = () => {
 
@@ -30,16 +30,48 @@ const Login = () => {
 
     if(registro){
       registrar()
+    }else{
+      login()
     }
   }
+
+  const login = React.useCallback(async() => {
+    try {
+      const res = await auth.signInWithEmailAndPassword(email, password)
+      console.log(res.user)
+    } catch (error) {
+      console.log(error)
+      if(error.code === 'auth/user-not-found'){
+        setError('Email not registered...')
+      }
+      if(error.code === 'auth/wrong-password'){
+        setError('The password is invalid')
+      }
+    }
+
+  }, [email, password])
 
   const registrar =React.useCallback(async() => {
 
     try {
       const res = await auth.createUserWithEmailAndPassword(email, password)
-      console.log(res)
+      console.log(res.user)
+      await db.collection('usuarios').doc(res.user.email).set({
+        email: res.user.email,
+        uid: res.user.uid
+      })
+      setEmail('')
+      setPassword('')
+      setError(null)
+
     } catch (error) {
       console.log(error)
+      if(error.code === 'auth/invalid-email'){
+        setError('The email address is incorrect')
+      }
+      if(error.code === 'auth/email-already-in-use'){
+        setError('The email is already in use')
+      }
     }
 
   }, [email, password])
