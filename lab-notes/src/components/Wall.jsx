@@ -1,10 +1,28 @@
 import React from 'react'
-import {auth} from '../firebase'
+import {auth, db} from '../firebase'
 import {withRouter} from 'react-router-dom'
 
 const Wall = (props) => {
 
   const [user, setUser] = React.useState(null)
+  const cerrarSesion = () => {
+      auth.signOut()
+        .then(() => {
+          props.history.push('/')
+        })
+    }
+
+  React.useEffect(() => {
+    const getData = async () => {
+      try {
+        const data = await db.collection('tareas').get()
+        console.log(data.docs)
+      } catch (error) {
+        console.log(error)
+      }
+    }
+    getData();
+  })
 
   React.useEffect(() => {
     if(auth.currentUser){
@@ -15,14 +33,6 @@ const Wall = (props) => {
       props.history.push('/')
     }
   }, [props.history])
-
-  const cerrarSesion = () => {
-    auth.signOut()
-      .then(() => {
-        props.history.push('/')
-      })
-  }
-
 
   return (
     <div>
