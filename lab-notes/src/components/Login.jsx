@@ -1,8 +1,9 @@
 import React from 'react'
 import logo from '../images/logo.png'
 import { auth, db } from '../firebase'
+import {withRouter} from 'react-router-dom'
 
-const Login = () => {
+const Login = (props) => {
 
   const [email, setEmail] = React.useState('')
   const [password, setPassword] = React.useState('')
@@ -39,6 +40,10 @@ const Login = () => {
     try {
       const res = await auth.signInWithEmailAndPassword(email, password)
       console.log(res.user)
+      setEmail('')
+      setPassword('')
+      setError(null)
+      props.history.push('/wall')
     } catch (error) {
       console.log(error)
       if(error.code === 'auth/user-not-found'){
@@ -49,7 +54,7 @@ const Login = () => {
       }
     }
 
-  }, [email, password])
+  }, [email, password, props.history])
 
   const registrar =React.useCallback(async() => {
 
@@ -63,7 +68,7 @@ const Login = () => {
       setEmail('')
       setPassword('')
       setError(null)
-
+      props.history.push('/wall')
     } catch (error) {
       console.log(error)
       if(error.code === 'auth/invalid-email'){
@@ -74,7 +79,7 @@ const Login = () => {
       }
     }
 
-  }, [email, password])
+  }, [email, password, props.history])
 
   return (
     <div className='container-login'>
@@ -127,4 +132,4 @@ const Login = () => {
   )
 }
 
-export default Login
+export default withRouter(Login)

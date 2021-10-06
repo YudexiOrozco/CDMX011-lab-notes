@@ -9,9 +9,24 @@ import {
 import Login from './components/Login'
 import Register from './components/Register'
 import Wall from './components/Wall'
+import {auth} from './firebase'
 
 function App() {
-  return (
+
+  const [firebaseUser, setFirebaseUser] = React.useState(false)
+
+  React.useEffect(() => {
+    auth.onAuthStateChanged(user => {
+      console.log(user)
+      if(user){
+        setFirebaseUser(user)
+      }else{
+        setFirebaseUser(null)
+      }
+    })
+  }, [])
+
+  return firebaseUser !== false ? (
     <Router>
       <div className="container">
         {/* <div className='btn-group'>
@@ -39,7 +54,9 @@ function App() {
         </Switch>
       </div>
     </Router>
-  );
+  ) : (
+    <p>Loading...</p>
+  )
 }
 
 export default App;
