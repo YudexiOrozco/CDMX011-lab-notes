@@ -12,19 +12,48 @@ code {
     monospace;
 }
 
-.container-login{
-  margin: 50px;
+
+.slogan{
+  position: absolute;
+  top: 115px;
+  width: 250px;
+  font-family: nunito;
+  color:rgb(124, 124, 124);
 }
 
+.text-register{
+  position: absolute;
+  top: 240px;
+  left: 195px;
+  font-family: nunito;
+  font-weight: bolder;
+  font-size: 20px;
+  color: rgb(124, 124, 124);
+}
+.container-login{
+  margin: 50px;
+ 
+}
+.cook{
+  width: 400px;
+  position: absolute;
+  top: 580px;
+  left: 220px;
+  opacity: 0.6;
+}
 .logo{
   width: 300px;
 }
 
 .container-form{
-  /* background-color: aquamarine; */
-  display: flex;
-  flex-wrap: wrap;
+  background-color: #E0DA4F;
+  /* display: flex;
+  flex-wrap: wrap; */
   width: 280px;
+  border-radius: 7px;
+  position: absolute;
+  left: 150px;
+  top: 300px;
   
 }
 

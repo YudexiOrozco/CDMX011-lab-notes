@@ -5,6 +5,8 @@ import {withRouter} from 'react-router-dom'
 const Wall = (props) => {
 
   const [user, setUser] = React.useState(null)
+  const [tareas, setTareas] = React.useState([])
+
   const cerrarSesion = () => {
       auth.signOut()
         .then(() => {
@@ -16,13 +18,15 @@ const Wall = (props) => {
     const getData = async () => {
       try {
         const data = await db.collection('tareas').get()
-        console.log(data.docs)
+        const arrayData = data.docs.map(doc => ({ id: doc.id, ...doc.data() }))
+        console.log(arrayData)
+        setTareas(arrayData)
       } catch (error) {
         console.log(error)
       }
     }
     getData();
-  })
+  }, [])
 
   React.useEffect(() => {
     if(auth.currentUser){
@@ -36,13 +40,27 @@ const Wall = (props) => {
 
   return (
     <div>
-      <h2>Este es el wall</h2>
+      <h2>Lista de Recetas</h2>
       <button onClick={() => cerrarSesion()}>Cerrar sesión</button>
       {
         user && (
           <h3>{user.email}</h3>
         )
       }
+      <div className='container-tareas'>
+        <div>
+          <ul>
+            {
+              tareas.map(item => (
+                <li key={item.id}>
+                  {item.name}
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+        <div>Formulario</div>
+      </div>
     </div>
   )
 }

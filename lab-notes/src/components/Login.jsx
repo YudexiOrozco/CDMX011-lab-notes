@@ -1,5 +1,6 @@
 import React from 'react'
 import logo from '../images/logo.png'
+import cook from '../images/cooking.jpg'
 import { auth, db } from '../firebase'
 import {withRouter} from 'react-router-dom'
 
@@ -84,14 +85,15 @@ const Login = (props) => {
   return (
     <div className='container-login'>
       <img className='logo' src={logo} alt='logo app foodpad'/>
-      <h3>Manage, organize and save your favorite recipes</h3>
-      <h4>
+      <img className='cook' src={cook} alt='image cooking'/>
+      <h3 className='slogan'>Manage, organize and save your favorite recipes</h3>
+      <h4 className='text-register'>
         {
           registro ? 'Registro de usuarios' : 'Login de acceso'
         }
       </h4>
-      <div className='container-form'>
-        <div>
+      <div className='container'>
+        <div className='container-form'>
           <form onSubmit={procesarDatos}>
             {
               error && (
