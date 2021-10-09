@@ -64,7 +64,7 @@ code {
   border: solid;
   border-width: 1px;
 }
-button{
+.btn-login{
   width: 260px;
   height: 35px;
   margin: 10px;

@@ -9,7 +9,7 @@ const Login = (props) => {
   const [email, setEmail] = React.useState('')
   const [password, setPassword] = React.useState('')
   const [error, setError] = React.useState(null)
-  const [registro, setRegistro] = React.useState(true)
+  const [registro, setRegistro] = React.useState(false)
 
   const procesarDatos = (e) =>{
     e.preventDefault()
@@ -39,8 +39,8 @@ const Login = (props) => {
 
   const login = React.useCallback(async() => {
     try {
-      const res = await auth.signInWithEmailAndPassword(email, password)
-      console.log(res.user)
+      await auth.signInWithEmailAndPassword(email, password)
+      // console.log(res.user)
       setEmail('')
       setPassword('')
       setError(null)
@@ -61,7 +61,7 @@ const Login = (props) => {
 
     try {
       const res = await auth.createUserWithEmailAndPassword(email, password)
-      console.log(res.user)
+      // console.log(res.user)
       await db.collection('usuarios').doc(res.user.email).set({
         email: res.user.email,
         uid: res.user.uid
@@ -85,7 +85,7 @@ const Login = (props) => {
   return (
     <div className='container-login'>
       <img className='logo' src={logo} alt='logo app foodpad'/>
-      <img className='cook' src={cook} alt='image cooking'/>
+      <img className='cook' src={cook} alt='cooking'/>
       <h3 className='slogan'>Manage, organize and save your favorite recipes</h3>
       <h4 className='text-register'>
         {
@@ -114,12 +114,13 @@ const Login = (props) => {
               onChange = {e => setPassword(e.target.value)}
               value = {password}
             />
-            <button type='submit'>
+            <button className='btn-login' type='submit'>
               {
                 registro ? 'Registrarse' : 'Acceder'
               }
             </button>
             <button 
+              className='btn-login' 
               onClick={() => setRegistro(!registro)}
               type='button'
             >
