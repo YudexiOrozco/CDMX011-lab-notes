@@ -1,0 +1,59 @@
+/*  reposo */
+.div-input {
+  margin-bottom: 10px;
+  margin-top: 25px;
+  margin-left: 5px;
+}
+
+.span-email,
+.input-email {
+  font: 19px/16px nunito;
+  padding: 0;
+}
+
+.inputs {
+  display: block;
+  width: 320px;
+  border: 2px solid silver;
+  padding: 10px 5px;
+  position: relative;
+  box-sizing: border-box;
+  border-radius: 4px;
+  transition: .25s;
+  margin-top: 15px;
+}
+
+.inputs .input-email {
+  display: block;
+  width: 100%;
+  border: none;
+  background: transparent;
+  outline: none;
+}
+
+.inputs .span-email {
+  color: silver;
+  position: absolute;
+  top: 8px;
+  left: 10px;
+  transition: .25s;
+}
+
+/* focus */
+.inputs.focus {
+  border-color: #d5cf23;
+}
+
+.inputs .span-email.focus {
+  color: #d5cf23;
+}
+
+/* top */
+
+.inputs .span-email.top {
+  left: 10px;
+  top: -10px;
+  font-size: 18px;
+  background: white;
+  padding: 0 5px;
+}

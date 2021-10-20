@@ -15,23 +15,27 @@ code {
 
 .slogan{
   position: absolute;
-  top: 115px;
-  width: 250px;
+  left: 152px;
+  top: 150px;
+  width: 300px;
+  font-weight: lighter;
   font-family: nunito;
+  font-size: 23px;
+  text-align: center;
   color:rgb(124, 124, 124);
 }
 
 .text-register{
   position: absolute;
-  top: 240px;
-  left: 195px;
+  top: 230px;
+  left: 190px;
   font-family: nunito;
-  font-weight: bolder;
-  font-size: 20px;
+  font-weight:lighter;
+  font-size: 24px;
   color: rgb(124, 124, 124);
 }
 .container-login{
-  margin: 50px;
+  margin: 40px;
  
 }
 .cook{
@@ -42,30 +46,229 @@ code {
   opacity: 0.6;
 }
 .logo{
-  width: 300px;
+  width: 325px;
+}
+.logo-login{
+  position: absolute;
+  top: 70px;
+  left: 140px;
+  width: 335px;
 }
 
 .container-form{
-  background-color: #E0DA4F;
+  /* background-color: #E0DA4F; */
   /* display: flex;
   flex-wrap: wrap; */
-  width: 280px;
+  width: 330px;
   border-radius: 7px;
   position: absolute;
-  left: 150px;
-  top: 300px;
+  left: 140px;
+  top: 270px;
   
 }
 
-.inputs{
+/* .inputs{
   width: 250px;
   height: 30px;
   margin: 10px;
   border: solid;
   border-width: 1px;
-}
+} */
+
 .btn-login{
-  width: 260px;
+  width: 320px;
+  height: 47px;
+  margin: 4px;
+  background-color: #d5cf23;
+  border: none;
+  border-radius: 4px;
+  color: white;
+  font-size: 21px;
+  font-weight:bolder;
+  font-family: nunito;
+}
+
+.btn-google{
+  width: 320px;
+  height: 47px;
+  margin-top: 35px;
+  margin-left: 5px;
+  /* margin: 5px; */
+  background-color: #ffffff;
+  border: solid 2px;
+  border-color: #E04F68;
+  border-radius: 4px;
+  color: #E04F68;
+  font-size: 21px;
+  font-weight:bolder;
+  font-family: nunito;
+}
+.btn-google
+img{
+  width: 28px;
+  position: absolute;
+  left: 70px;
+}
+
+.btn-new{
+  width: 320px;
+  height: 47px;
+  margin-top: 15px;
+  margin-left: 5px;
+  background-color: #E04F68;
+  border: none;
+  border-radius: 4px;
+  color: white;
+  font-size: 21px;
+  /* font-weight:bolder; */
+  font-family: nunito;
+}
+
+.icon-plus{
+  position: absolute;
+  left: 470px;
+  top: 830px;
+  background-color: transparent;
+  border: none;
+  width: 100px;
+}
+.icon-plus
+img{
+  width: 90px;
+  cursor: pointer;
+}
+.icon-plus
+img:hover{
+  /* background-color: white; */
+  opacity: 0.6;
+}
+
+.btn-close
+img{
+  width: 20px;
+ 
+}
+
+.input-title {
+  border: solid;
+  border-color: #E04F68;
+  width: 290px;
+  height: 25px;
+  font-size: 18px;;
+  top: 50px;
+  position: absolute;
+  border-width: 2px;
+  border-radius: 3px;
+}
+.input-pass {
+  border: solid;
+  border-color: #E04F68;
+  position:absolute;
+  top:90px;
+  width: 290px;
+  height: 80px;;
+  font-size: 18px;
+  border-width: 2px;
+  border-radius: 3px;
+  resize: none;
+}
+
+.btn-submit {
+  position: absolute;
+  top: 190px;
+  background-color: #E04F68 ;
+  border: none;
+  border-radius: 3px;
+  color: white;
+  font-size: 20px;
+  left: 125px;
+  width: 90px;
+  height: 30px;
+  
+}
+
+.btn-logout{
+  position: absolute;
+  top: 80px;
+  right: 125px;
+  background-color: #E0DA4F ;
+  border: none;
+  border-radius: 3px;
+  color: rgb(82, 80, 80);
+  font-size: 22px;
+  font-family: nunito;
+  font-weight:bold;
   height: 35px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.title-modal{
+  position: absolute;
+  color:#E04F68;
+  top: 0px;
+}
+
+.div-recipes{
+  width: 500px;
+  height: 100px;
+  border-radius: 6px;
+  background-color: #dae11d56;
   margin: 10px;
+  left: 0px;
+  position: relative;
+  padding: 15px;
+
+}
+
+.formulario {
+  position: fixed;
+  top: 340px;
+  left: 50px;
+ 
+}
+.container-tareas {
+  /* position: absolute; */
+  left:0px;
+  overflow: scroll;
+  
+  /* 
+  flex-direction: row;
+  align-items:flex-start;
+  justify-content:left; */
+}
+
+.btn-tareas {
+  right: 10px;
+  top: 5px;
+  position: absolute;
+  margin: 10px;
+}
+
+.btns{
+  background-color: #E04F68;
+  color: white;
+  border: none;
+  margin-left: 8px;
+  font-size: 18px;
+  border-radius: 4px;
+  box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em, rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
+}
+
+.encabezado {
+  background-color: rgb(196, 248, 144);
+  /* position:fixed; */
+  /* z-index: 1; */
+}
+
+.first-div{
+  display: flex;
+  /* flex-direction: row; */
+  flex-direction: column;
+  margin: 25px;
+}
+.vector {
+  position: absolute;
+  z-index: -1;
+  top: 450px;
+  left: 0px;
 }

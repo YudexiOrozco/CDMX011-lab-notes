@@ -1,17 +1,20 @@
-import React from 'react'
+import React, {useState} from 'react'
 import logo from '../images/logo.png'
-import cook from '../images/cooking.jpg'
+import cook from '../images/cooking.png'
+import google from '../images/google.png'
+import vector from '../images/vector.png'
 import { auth, db } from '../firebase'
 import {withRouter} from 'react-router-dom'
 
 const Login = (props) => {
 
-  const [email, setEmail] = React.useState('')
-  const [password, setPassword] = React.useState('')
-  const [error, setError] = React.useState(null)
-  const [registro, setRegistro] = React.useState(false)
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [error, setError] = useState(null)
+  const [registro, setRegistro] = useState(false)
 
   const procesarDatos = (e) =>{
+
     e.preventDefault()
     if(!email.trim()){
       // console.log('Ingrese Email')
@@ -26,6 +29,7 @@ const Login = (props) => {
     if(password.length < 6){
       // console.log('Password mayor a 6 caracteres')
       setError('Password mayor a 6 caracteres')
+      return
     }
     setError(null)
     console.log('Pasando todas las validaciones!')
@@ -82,16 +86,33 @@ const Login = (props) => {
 
   }, [email, password, props.history])
 
+
+  const focus = (e) => {
+    e.currentTarget.previousElementSibling.classList.add('top')
+    e.currentTarget.previousElementSibling.classList.add('focus');
+    e.currentTarget.parentNode.classList.add('focus');
+  }
+
+  const blur = (e) => {
+    e.currentTarget.value = e.currentTarget.value.trim();
+    if(e.currentTarget.value.trim().length === 0 ){
+       e.currentTarget.previousElementSibling.classList.remove('top');
+    }
+   
+    e.currentTarget.previousElementSibling.classList.remove('focus');
+    e.currentTarget.parentNode.classList.remove('focus');
+  }
+
   return (
     <div className='container-login'>
-      <img className='logo' src={logo} alt='logo app foodpad'/>
+      <img className='logo-login' src={logo} alt='logo app foodpad'/>
       <img className='cook' src={cook} alt='cooking'/>
-      <h3 className='slogan'>Manage, organize and save your favorite recipes</h3>
-      <h4 className='text-register'>
+      <h3 className='slogan'>Manage, organize and save your favorite recipes.</h3>
+      {/* <h4 className='text-register'>
         {
-          registro ? 'Registro de usuarios' : 'Login de acceso'
+          registro ? 'Create an account' : 'Login registered user'
         }
-      </h4>
+      </h4> */}
       <div className='container'>
         <div className='container-form'>
           <form onSubmit={procesarDatos}>
@@ -100,37 +121,50 @@ const Login = (props) => {
                 <div>{error}</div>
               )
             }
-            <input 
-              type = 'email' 
-              className = 'inputs'
-              placeholder = 'Ingrese un email'
-              onChange = {e => setEmail(e.target.value)}
-              value = {email}
-            />
+            <div className='div-input'> 
+              <label className='inputs'>
+                <span className='span-email'>Email</span>
+                <input 
+                  type = 'email' 
+                  className = 'input-email'
+                  onChange = {e => setEmail(e.target.value)}
+                  onFocus={ (e) => { focus(e)} }
+                  onBlur={ (e) => { blur(e)} }
+                  value = {email}
+                />
+              </label>
+           
+            <label className='inputs'>
+            <span className='span-email'>Password</span>
             <input 
               type = 'password' 
-              className = 'inputs'
-              placeholder = 'Ingrese una contraseña'
+              className = 'input-email'
               onChange = {e => setPassword(e.target.value)}
+              onFocus={ (e) => { focus(e)} }
+              onBlur={ (e) => { blur(e)} }
               value = {password}
             />
+             </label> 
+            </div>
             <button className='btn-login' type='submit'>
               {
-                registro ? 'Registrarse' : 'Acceder'
+                registro ? 'Sign Up' : 'Log In'
               }
             </button>
+            <button className='btn-google' ><img  src={google} alt='btn-google'/>With Google</button>
             <button 
-              className='btn-login' 
+              className='btn-new' 
               onClick={() => setRegistro(!registro)}
               type='button'
             >
              {
-               registro ? '¿Ya estas registrado?' : '¿No tienes cuenta?'
+               registro ? 'You already sign up?' : 'New account'
              }
             </button>
           </form>
         </div>
       </div>
+      <img className='vector' src={vector} alt='vector'/>
     </div>
   )
 }
