@@ -35,9 +35,7 @@ function App() {
           </Link>
         </div> */}
         <Switch>
-          <Route path='/' exact>
-            <Login />
-          </Route>
+          <Route exact path='/' component={Login} />
           <Route path='/register'>
             <Register />
             <NavLink to = '/wall' activeClassName='active'>
@@ -48,9 +46,7 @@ function App() {
             Log in
             </Link>
           </Route>
-          <Route path='/wall'>
-            <Wall />
-          </Route>
+          <Route path='/wall' component={ Wall } />
         </Switch>
       </div>
     </Router>

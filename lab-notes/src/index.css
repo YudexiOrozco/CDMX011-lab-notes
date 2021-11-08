@@ -47,6 +47,7 @@ code {
 }
 .logo{
   width: 325px;
+  margin-left: 13px;
 }
 .logo-login{
   position: absolute;
@@ -113,7 +114,7 @@ img{
 .btn-new{
   width: 320px;
   height: 47px;
-  margin-top: 15px;
+  margin-top: 30px;
   margin-left: 5px;
   background-color: #E04F68;
   border: none;
@@ -152,8 +153,8 @@ img{
 .input-title {
   border: solid;
   border-color: #E04F68;
-  width: 290px;
-  height: 25px;
+  width: 390px;
+  height: 35px;
   font-size: 18px;;
   top: 50px;
   position: absolute;
@@ -164,24 +165,25 @@ img{
   border: solid;
   border-color: #E04F68;
   position:absolute;
-  top:90px;
-  width: 290px;
-  height: 80px;;
-  font-size: 18px;
+  top:98px;
+  width: 390px;
+  height: 170px;;
+  font-size: 19px;
   border-width: 2px;
   border-radius: 3px;
   resize: none;
+  
 }
 
 .btn-submit {
   position: absolute;
-  top: 190px;
+  top: 290px;
   background-color: #E04F68 ;
   border: none;
   border-radius: 3px;
   color: white;
   font-size: 20px;
-  left: 125px;
+  left: 170px;
   width: 90px;
   height: 30px;
   
@@ -189,8 +191,9 @@ img{
 
 .btn-logout{
   position: absolute;
-  top: 80px;
-  right: 125px;
+  top: 115px;
+  /* right: 125px; */
+  margin-left: 440px;
   background-color: #E0DA4F ;
   border: none;
   border-radius: 3px;
@@ -255,7 +258,7 @@ img{
 }
 
 .encabezado {
-  background-color: rgb(196, 248, 144);
+  /* background-color: rgb(196, 248, 144); */
   /* position:fixed; */
   /* z-index: 1; */
 }
@@ -272,3 +275,19 @@ img{
   top: 450px;
   left: 0px;
 }
+
+.welcome {
+margin-left: 17px;
+font-family: nunito;
+color: rgb(140, 139, 139);
+}
+
+.date{
+  position: absolute;
+  left: 250px;
+  top: 5px;
+  font-size: 16px;
+  color: #E04F68;
+  font-family: nunito;
+}
+

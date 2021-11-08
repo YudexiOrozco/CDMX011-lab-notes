@@ -1,10 +1,8 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import logo from '../images/logo.png'
 import cook from '../images/cooking.png'
-import google from '../images/google.png'
 import vector from '../images/vector.png'
 import { auth, db } from '../firebase'
-import {withRouter} from 'react-router-dom'
 
 const Login = (props) => {
 
@@ -14,8 +12,8 @@ const Login = (props) => {
   const [registro, setRegistro] = useState(false)
 
   const procesarDatos = (e) =>{
-
     e.preventDefault()
+
     if(!email.trim()){
       // console.log('Ingrese Email')
       setError('Ingrese Email')
@@ -41,27 +39,32 @@ const Login = (props) => {
     }
   }
 
+
   const login = React.useCallback(async() => {
     try {
       await auth.signInWithEmailAndPassword(email, password)
-      // console.log(res.user)
+
       setEmail('')
       setPassword('')
       setError(null)
       props.history.push('/wall')
     } catch (error) {
       console.log(error)
-      if(error.code === 'auth/user-not-found'){
-        setError('Email not registered...')
-      }
-      if(error.code === 'auth/wrong-password'){
-        setError('The password is invalid')
+
+      switch (error.code) {
+        case 'auth/user-not-found':
+          setError('Email not registered...')
+          break;
+        case 'auth/wrong-password':
+          setError('The password is invalid')
+          break;
+        default:
+          setError( "Authentication Failed. Try again later.")
       }
     }
-
   }, [email, password, props.history])
 
-  const registrar =React.useCallback(async() => {
+  const registrar = React.useCallback(async() => {
 
     try {
       const res = await auth.createUserWithEmailAndPassword(email, password)
@@ -118,7 +121,7 @@ const Login = (props) => {
           <form onSubmit={procesarDatos}>
             {
               error && (
-                <div>{error}</div>
+                <p>{error}</p>
               )
             }
             <div className='div-input'> 
@@ -151,7 +154,7 @@ const Login = (props) => {
                 registro ? 'Sign Up' : 'Log In'
               }
             </button>
-            <button className='btn-google' ><img  src={google} alt='btn-google'/>With Google</button>
+            
             <button 
               className='btn-new' 
               onClick={() => setRegistro(!registro)}
@@ -169,4 +172,4 @@ const Login = (props) => {
   )
 }
 
-export default withRouter(Login)
+export default Login;

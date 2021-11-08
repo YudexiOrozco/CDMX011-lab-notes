@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { auth, db } from '../firebase'
-import { withRouter } from 'react-router-dom'
 import icon from '../images/icon-wall.png'
 import logo from '../images/logo.png'
 import close from '../images/close.png'
@@ -143,6 +142,7 @@ const Wall = (props) => {
             {
               tareas.map(item => (
                 <div className='div-recipes' key={item.id}>
+                  <h3 className='date'>{new Date(item.fecha).toDateString() }</h3>
                   <b>{item.name}</b> <hr/>
                    <div
                     onClick={() => {activarEdicion(item); setModal(!modal)}}
@@ -158,7 +158,7 @@ const Wall = (props) => {
                   >
                     Edit
                   </button>
-                  <h3>{new Date(item.fecha).toDateString() }</h3>
+                  
                   </div>
                 </div>
               ))
@@ -215,21 +215,18 @@ const Wall = (props) => {
   )
 }
 
-export default withRouter(Wall)
-
-
-
+export default Wall;
 
 const ContenedorModal = styled.div`
-  width: 300px;
-  min-height: 200px;
+  width: 400px;
+  min-height: 300px;
   background: #fff;
   position: relative;
   border-radius: 5px;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
   
   padding: 20px;
-  left: 90px;
+  left: 40px;
 `;
 
 const BotonCerrar = styled.button`
